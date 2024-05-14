@@ -1,0 +1,17 @@
+<div class="title1">
+  REVISÃO TEMPLATE VARIABLES + VIEWCHILDREN + LIFECYCLES HOOKS ANGULAR
+<br>
+</div>
+<br>
+<div #minhaDiv *ngFor="let fruit of fruitList">
+ {{ fruit }}
+</div>
+<div>
+<div>
+  <p> Random Fruit: <span *ngIf="randomFruit">{{ randomFruit }}</span></p>
+</div>
+  <button (click)="changeFruit()">Trocar fruta</button>
+</div>
+<br>
+<br>
+--------------------

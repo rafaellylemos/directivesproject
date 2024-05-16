@@ -1,0 +1,19 @@
+<app-review />
+--------------------
+<app-sem-diretiva />
+--------------------
+<app-com-diretiva />
+    <!---Com CSS-In-Line...ou com o atributo Style-->
+<p style="background-color: orange; color:white;">Parágrafo normal</p>
+    <!---Com Attribute binding-->
+<p [attr.style]="'background-color: red; color:blue;'">Parágrafo normal</p>
+    <!---Com Property binding-->
+<p [style]="'background-color: gray; color:orange;'">Parágrafo normal</p>
+    <!---Com objeto no Property binding-->
+<p [style]="{
+backgroundColor: 'black',
+color: 'white',
+}">Parágrafo normal</p>
+
+     <!---Com HostBinding-->
+<p appStyle> Parágrafo normal </p>

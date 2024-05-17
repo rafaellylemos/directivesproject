@@ -17,3 +17,25 @@ color: 'white',
 
      <!---Com HostBinding-->
 <p appStyle> Parágrafo normal </p>
+
+<!---Com o class, normal-->
+<p class="meu-texto meu-size"> Parágrafo normal </p>
+
+<!---Com o attribute binding-->
+<p [attr.class]="'meu-texto'"> Parágrafo normal </p>
+
+<!---Com o property binding-->
+<p [className]="'meu-texto meu-size'"> Parágrafo normal </p>
+
+<!---Com property binding + objeto como parâmetro-->
+<p [class]="{
+    'meu-texto': true,
+    'meu-size': true
+}"> Parágrafo normal </p>
+
+<!---Com diretiva-->
+<p appClass> Parágrafo normal </p>
+
+<!---HostListener-->
+<input appListener #meuInput/>
+<button [disabled]="!botaoHabilitado">Enviar!</button>

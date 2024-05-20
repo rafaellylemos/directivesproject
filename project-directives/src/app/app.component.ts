@@ -11,6 +11,8 @@ export class AppComponent {
   listenerDirective!: ListenerDirective;
   botaoHabilitado = false;
 
+  appBgColor = 'green';
+
   constructor(private renderer: Renderer2, private elementRef: ElementRef) {}
 
   ngOnInit() {
@@ -31,4 +33,5 @@ export class AppComponent {
   chamarOnClickDiretiva() {
     this.listenerDirective.onClick();
 }
+
 }

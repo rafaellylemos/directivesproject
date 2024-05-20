@@ -40,4 +40,12 @@ color: 'white',
 <input appListener #meuInput/>
 <button [disabled]="!botaoHabilitado">Enviar!</button>
 <br>
-<input appInputBackground="blue" textColor="white"/>
+<input appInputBackground
+[bgColor]=appBgColor 
+tColor="white"
+/>
+<br>
+<input appInputBackground
+bgColor="blue" 
+tColor="white"
+/>

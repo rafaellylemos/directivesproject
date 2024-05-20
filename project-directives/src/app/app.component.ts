@@ -1,39 +1,34 @@
-import { AfterViewInit, Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { ListenerDirective } from './directives/listener.directive';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements AfterViewInit {
-  fruitList = [
-    'Banana',
-    'Maçã',
-    'Pêra',
-    'Morango',
-    'Laranja'
-  ]
+export class AppComponent {
+  @ViewChild(ListenerDirective) 
+  listenerDirective!: ListenerDirective;
+  botaoHabilitado = false;
 
-  @ViewChildren('minhaDiv')
-   fruitListEl!: QueryList<ElementRef<HTMLDivElement>>;
-  fruits: string | undefined | null;
+  constructor(private renderer: Renderer2, private elementRef: ElementRef) {}
 
-   ngAfterViewInit(){
-    this.fruitListEl.forEach((el: ElementRef<HTMLDivElement>) => {
-      console.log(el.nativeElement.textContent);
+  ngOnInit() {
+    this.renderer.listen('document', 'click', (event) => {
+      if (!this.elementRef.nativeElement.contains(event.target) && this.botaoHabilitado) {
+        this.botaoHabilitado = false; 
+      }
     });
-
-    const firstFruit = this.fruitListEl.toArray()[0].nativeElement.textContent;
-    console.log(firstFruit);
-    this.fruits = firstFruit;
   }
 
-  randomFruit: string | undefined;
-
-  constructor() {}
-
-  changeFruit() {
-    const randomIndex = Math.floor(Math.random() * this.fruitList.length);
-    this.randomFruit = this.fruitList[randomIndex];
+  ngAfterViewInit() {
+    const elementRef = this.listenerDirective.getElementRef();
+    this.renderer.listen(elementRef.nativeElement, 'click', () => {
+      this.botaoHabilitado = true;
+    });
   }
+
+  chamarOnClickDiretiva() {
+    this.listenerDirective.onClick();
+}
 }
